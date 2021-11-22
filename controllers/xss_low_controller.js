@@ -11,9 +11,10 @@ const photosArray = new Array(['/images/boat-gaa2ca329d_640.jpg', 'Barca pe Bale
   ['/images/meat-gde809f16d_640.jpg', 'Carne pe gratar', today],
   ['/images/mountains-g70563c951_640.jpg', 'Vedere de la munte', today],
   ['/images/person-g5c2bd8b55_640.jpg', 'On top of the world munte', today],
-  ['/images/rottweiler-g31139b978_640.jpg', 'Cainii vecinului', today])
+  ['/images/rottweiler-g31139b978_640.jpg', 'Cainii vecinului', today]);
 
-  
+
+
 // list all photos
 exports.photos_list = function (req, res) {
 

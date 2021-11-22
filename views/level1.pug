@@ -40,6 +40,19 @@ block content
           .modal-footer
             button.btn.btn-primary(type="button", data-bs-dismiss="modal") OK
 
+    .modal.fade#staticBackdrop(data-bs-backdrop="static", data-bs-keyboard="false", tabindex="-1", aria-labelledby="staticBackdropLabel", aria-hidden="true")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5.modal-title#staticBackdropLabel Enter the new description for the photo
+            button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
+          .modal-body
+            textarea.form-control#message-text
+        
+          .modal-footer
+            button.btn.btn-secondary(type="button", data-bs-dismiss="modal") Close
+            button.btn.btn-primary(type="button", onclick="modifyDescription()") Send message
+
     section.py-5.text-center.container
       .row.py-lg-5
         .col-lg-6.col-md-8.mx-auto
@@ -56,16 +69,16 @@ block content
       .container
         .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
           //-aici un for pt fiecare poza
-          each photo in photos_list  
+          each photo, index in photos_list  
             .col
               .card.shadow-sm
                 img.bd-placeholder-img.card-img-top(src=photo[0], focusable="false")
                 .card-body
-                  p.card-text #{photo[1]}
+                  p.card-text(id="text"+index) #{photo[1]}
                   .d-flex.justify-content-between.align-items-center
                     .btn-group
                       button.btn.btn-sm.btn-outline-secondary(type="button") View
-                      button.btn.btn-sm.btn-outline-secondary(type="button") Edit
+                      button.btn.btn-sm.btn-outline-secondary(type="button", id="photo"+index, data-bs-toggle="modal", data-bs-target="#staticBackdrop", onclick="setCard(this.id)") Edit
                     small.text-muted #{photo[2]}
           
   footer.text-muted.py-5
@@ -77,6 +90,7 @@ block content
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js", integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p", crossorigin="anonymous")
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
   script(src="/javascript/overrideAlertLow.js")
+  script(src="/javascript/modifyDescription.js")
 
 
   script.
