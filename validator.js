@@ -279,7 +279,7 @@ blockedEvents = ["onactivate",
 
 exports.validateXSSlow = 
                 check('text').trim().not().isEmpty().withMessage('Search cannot be empty!')
-                .bail().trim().escape().toLowerCase()/*.not().contains('script')*/.withMessage("Don't try running any scripts");
+                .bail().trim().escape().toLowerCase();
 
 
 exports.validateXSShigh = 

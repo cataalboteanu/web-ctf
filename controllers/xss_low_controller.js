@@ -1,19 +1,46 @@
-// const async = require('async')
-
-const { express } = require('express')
+//const async = require('async')
+//const { express } = require('express')
 const {validationResult} = require('express-validator')
-
-const today = new Date().toISOString().slice(0, 10)
-const photosArray = new Array(['/images/boat-gaa2ca329d_640.jpg', 'Barca pe Balea Lac, priveliste frumoasa la munte', today],
-  ['/images/dog-g213168153_640.jpg', 'Caine zambaret', today],
-  ['/images/dog-g71b6deabf_640.jpg', 'Caine in excurie pe munte', today],
-  ['/images/grill-g30f8f79f9_640.jpg', 'Foisor pentru gratar', today],
-  ['/images/meat-gde809f16d_640.jpg', 'Carne pe gratar', today],
-  ['/images/mountains-g70563c951_640.jpg', 'Vedere de la munte', today],
-  ['/images/person-g5c2bd8b55_640.jpg', 'On top of the world munte', today],
-  ['/images/rottweiler-g31139b978_640.jpg', 'Cainii vecinului', today]);
+const Photo = require('../models/xss_stored_model')
 
 
+const get_photos = async function(){
+   const p = await Photo.find({}, 'path description').lean();
+   return p;
+}
+
+var photo_array = [];
+get_photos().then(values=>{
+  for(var i in values){
+    photo_array.push(values[i])
+  }
+});
+
+const update_photos = async function(){
+
+  const filter = { _id: req.body.id };
+  const update = { description: req.body.description };
+
+  let doc = await Photo.findOneAndUpdate(filter, update, {
+    new: true
+  });
+  
+  return doc;
+}
+
+exports.description_update = function (req, res) {
+  console.log(req.body)
+  //res.redirect('/level1Low')
+  update_photos().then(value=>{
+
+    console.log(value)
+    res.redirect('http://google.com')
+    
+  });
+    
+  
+
+}
 
 // list all photos
 exports.photos_list = function (req, res) {
@@ -23,17 +50,17 @@ exports.photos_list = function (req, res) {
 
   if (!errors.isEmpty()) {
     const errMsg = errors.array().map(error => error.msg)
-    res.render("level1", { title: "Web-CTF", photos_list: photosArray, message: errMsg});
+    res.render("level1Low", { title: "Web-CTF", photos_list: photo_array, message: errMsg});
   }
   const text = req.query.text.toLowerCase();
-  const result = photosArray.filter((p) => p[1].toLowerCase().includes(text));
+  const result = photo_array.filter((p) => p['description'].toLowerCase().includes(text));
       
   if (result.length > 0) {
     msg = "Search results for: " + req.query.text;
-    res.render("level1", {title: "Web-CTF", photos_list: result, message: msg });
+    res.render("level1Low", {title: "Web-CTF", photos_list: result, message: msg });
   } 
   else {
     msg = "No results found for " + req.query.text;
-    res.render("level1", {title: "Web-CTF", photos_list: photosArray, message: msg });
+    res.render("level1Low", {title: "Web-CTF", photos_list: photo_array, message: msg });
   }
 }

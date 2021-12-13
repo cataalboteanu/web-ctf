@@ -1,16 +1,11 @@
-var id;
-function setCard(clicked_id){
-    id = clicked_id.replace("photo","");
-}
-
+var _id;
+function setCard(clicked_element){ _id = clicked_element }
 
 function modifyDescription(){
-    //var title = document.getElementById('staticBackdropLabel');
-    var text = document.getElementById('message-text').value;
-    
-  
-    alert(text);
+    var text = document.getElementById('photo').value;
+    axios.post('/level1/update', {
+        id: _id,
+        description: text
+      })
 
-    
-    
 }
