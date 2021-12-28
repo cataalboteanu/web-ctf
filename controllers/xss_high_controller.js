@@ -23,22 +23,22 @@ exports.photos_list = function (req, res) {
   if (!errors.isEmpty()) {
     const errMsg = errors.array().map(error => error.msg)
     if (errMsg == 'Blocked Tag')
-        res.status(404).send('Try all you want, but all tags are blocked');
+      return  res.status(404).send('Try all you want, but all tags are blocked');
     if (errMsg == 'Blocked Event')
-        res.status(404).send('Event blocked');
+      return  res.status(404).send('Event blocked');
         
-    res.render("level1Hard", { title: "Web-CTF", photos_list: photosArray, message: errMsg});
+    return res.render("level1Hard", { title: "Web-CTF", photos_list: photosArray, message: errMsg});
   }
   const text = req.query.text.toLowerCase();
   const result = photosArray.filter((p) => p[1].toLowerCase().includes(text));
 
   if (result.length > 0) {
     msg = "Search results for: " + req.query.text;
-    res.render("level1Hard", {title: "Web-CTF", photos_list: result, message: msg });
+    return res.render("level1Hard", {title: "Web-CTF", photos_list: result, message: msg });
   } 
   else {
     msg = "No results found for " + req.query.text;
-    res.render("level1Hard", {title: "Web-CTF", photos_list: photosArray, message: msg });
+    return res.render("level1Hard", {title: "Web-CTF", photos_list: photosArray, message: msg });
   }
 
 

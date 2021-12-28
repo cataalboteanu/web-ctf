@@ -1,4 +1,4 @@
-const { check, validationResult } = require('express-validator')
+const {body, check, validationResult } = require('express-validator')
 
 
 const blockedTags = ["<a",
@@ -277,10 +277,13 @@ blockedEvents = ["onactivate",
 "onwheel",
 ]
 
-exports.validateXSSlow = 
+exports.validateXSSlowSearch = 
                 check('text').trim().not().isEmpty().withMessage('Search cannot be empty!')
                 .bail().trim().escape().toLowerCase();
 
+exports.validateXSSlowPost = 
+                body('description').trim().not().contains('script').withMessage("Don't try running any scripts")
+                .bail().not().isEmpty().withMessage('Description cannot be empty!');
 
 exports.validateXSShigh = 
                 check('text').trim().not().isEmpty().withMessage('Search cannot be empty!')

@@ -30,7 +30,7 @@ block content
       .modal-dialog.modal-dialog-centered
         .modal-content
           .modal-header
-            h3.modal-title#exampleModalLabel XSS Reflected
+            h3.modal-title#exampleModalLabel XSS Stored
             //-button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
           .modal-body.fs-6.
             This is the first level. 
@@ -47,7 +47,7 @@ block content
             h5.modal-title#staticBackdropLabel Enter the new description for the photo
             button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
           .modal-body
-            input#photo.form-control(type='text', placeholder='Photo description', name='description' required='true')
+            input#photo.form-control(type='text', placeholder='Photo description', name='description', required)
             //- textarea.form-control#message-text
 
           .modal-footer
@@ -58,10 +58,10 @@ block content
       .row.py-lg-5
         .col-lg-6.col-md-8.mx-auto
           h1.fw-light
-            a.text-dark.nounderline(href="/level1") Photo album
+            a.text-dark.nounderline(href="/level1Low") Photo album
           p.lead.text-muted Take a look at the memories you created over the years.
           
-            form.col-12.col-lg-auto.mb-3.mb-lg-0.me-lg-3(action="/level1")
+            form.col-12.col-lg-auto.mb-3.mb-lg-0.me-lg-3(action="/level1Low")
               input.form-control.form-control-dark(type="search", name="text", placeholder="Search through photos...", aria-label="Search")
               input.btn.btn-primary.my-2(type="submit", value="Search")
               
@@ -76,6 +76,7 @@ block content
                 img.bd-placeholder-img.card-img-top(src=photo['path'], focusable="false")
                 .card-body
                   p.card-text #{photo['description']}
+                   #{photo['description']}
                   .d-flex.justify-content-between.align-items-center
                     .btn-group
                       button.btn.btn-sm.btn-outline-secondary(type="button") View
