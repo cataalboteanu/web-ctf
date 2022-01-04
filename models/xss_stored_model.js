@@ -6,4 +6,4 @@ var photoSchema = new Schema({
     description: String
 });
 
-module.exports = mongoose.model('PhotoCollection', photoSchema, 'Collection1');
+module.exports = mongoose.model('PhotoCollection', photoSchema, 'xss-stored');

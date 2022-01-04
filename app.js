@@ -3,16 +3,18 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
-//const cors = require('cors');
-
 
 const indexRouter = require('./routes/index')
+//const usersRouter = require('./routes/users')
+//const testRouter = require('./routes/test')
 
 const app = express()
 
+
 // Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = "mongodb+srv://cata:1234@cluster0.l7da5.mongodb.net/photo_library?retryWrites=true&w=majority";
+//var mongoDB = "mongodb+srv://cata:1234@cluster0.l7da5.mongodb.net/photo_library?retryWrites=true&w=majority";
+var mongoDB = 'mongodb://127.0.0.1:27017/vulns';
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -22,13 +24,13 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.use(logger('dev'))
-//app.use(cors())
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
+//app.use('/users', usersRouter)
 //app.use('/level1', testRouter)
 
 // catch 404 and forward to error handler
