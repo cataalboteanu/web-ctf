@@ -21,6 +21,9 @@ router.get('/level1Low/warning', function (req, res) {
 const xss_high_controller = require('../controllers/xss_high_controller')
 router.get('/level1Hard', validator.validateXSShigh, xss_high_controller.photos_list)
 
+//SQLi low
+//SQLi hard
+
 
 
 
