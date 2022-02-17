@@ -22,7 +22,15 @@ const xss_high_controller = require('../controllers/xss_high_controller')
 router.get('/level1Hard', validator.validateXSShigh, xss_high_controller.photos_list)
 
 //SQLi low
+router.get('/level2Low', function (req, res) {
+  res.render('level2Low')
+})
+
 //SQLi hard
+const sql_high_controller = require('../controllers/sql_high_controller')
+router.get('/level2Hard', function (req, res) {
+  res.render('level2Hard')
+})
 
 
 
