@@ -28,9 +28,7 @@ router.get('/level2Low', function (req, res) {
 
 //SQLi hard
 const sql_high_controller = require('../controllers/sql_high_controller')
-router.get('/level2Hard', function (req, res) {
-  res.render('level2Hard')
-})
+router.get('/level2Hard', sql_high_controller.product_list)
 
 
 

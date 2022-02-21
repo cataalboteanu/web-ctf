@@ -2,22 +2,36 @@ extends layout2
 
 block content
   //- Navigation
+  .modal.fade#exampleModal(tabindex="-1", aria-labelledby="exampleModalLabel", aria-hidden="true", data-bs-backdrop="static")
+      .modal-dialog.modal-dialog-centered
+        .modal-content
+          .modal-header
+            h3.modal-title#exampleModalLabel SQL injection
+            //-button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
+          .modal-body.fs-6.
+            This level is about injecting a malicious string in the SQL query happening on the server.
+            Try to find useful info about the technologies used.
+            As a proof of concept try to find the MySQL version.
+            Hint: this page uses Sequelize ORM version 5.8.9
+          .modal-footer
+            button.btn.btn-primary(type="button", data-bs-dismiss="modal") OK
+
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container.px-4.px-lg-5
-      a.navbar-brand(href="#") Smart shop
+      a.navbar-brand(href="/level2Hard") Smart shop
       button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
         span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarSupportedContent
         ul.navbar-nav.me-auto.mb-2.mb-lg-0.ms-lg-4
           li.nav-item
-            a.nav-link.active(aria-current="page", href="#!") Home
+            a.nav-link.active(aria-current="page", href="/level2Hard") Home
           li.nav-item
-            a.nav-link(href="#!") About
+            a.nav-link(href="#" data-bs-toggle="modal", data-bs-target="#exampleModal") About
           li.nav-item.dropdown
             a.nav-link.dropdown-toggle#navbarDropdown(href="#", role="button", data-bs-toggle="dropdown", aria-expanded="false") Shop
             ul.dropdown-menu(aria-labelledby="navbarDropdown")
               li
-                a.dropdown-item(href="#!") All Products
+                a.dropdown-item(href="/level2Hard") All Products
               li
                 hr.dropdown-divider
               li
@@ -35,13 +49,57 @@ block content
     .container.px-4.px-lg-5.my-5
       .text-center.text-white
         h1.display-4.fw-bolder Shop in style
-        p.lead.fw-normal.text-white-50.mb-0 With this shop hompeage template
 
   //-  Section
   section.py-5
     .container.px-4.px-lg-5.mt-5
+      //- label.form-label(for="exampleDataList") Select what to filter
+      //- input.form-control#exampleDataList(list="datalistOptions", placeholder="Type to search...", oninput="change()")
+      //- datalist#datalistOptions
+      //-   option(value="Rating")
+      //-   option(value="Feedback")
+      //-   option#noResultValue(value=" ")
+      form(method='GET')
+        .mb-3
+          label.form-label(for="Dropdown") Select what to filter
+          select.form-select#Dropdown(name="filter", onchange="selectFilter(this);", required)
+            option(value, selected, disabled) Please select
+            option(value="rating") Rating
+            option(value="price") Price
+          br 
+
+          label.form-label(for="radioRating") Select rating:
+          br 
+          .form-check.form-check-inline#radioRating
+            input.form-check-input#inlineRadio1(type="radio", name="value", value="1", disabled)
+            label.form-check-label(for="inlineRadio1") 1
+          .form-check.form-check-inline
+            input.form-check-input#inlineRadio2(type="radio", name="value", value="2", disabled)
+            label.form-check-label(for="inlineRadio2") 2
+          .form-check.form-check-inline
+            input.form-check-input#inlineRadio3(type="radio", name="value", value="3", disabled)
+            label.form-check-label(for="inlineRadio3") 3
+          .form-check.form-check-inline
+            input.form-check-input#inlineRadio4(type="radio", name="value", value="4", disabled)
+            label.form-check-label(for="inlineRadio4") 4
+          .form-check.form-check-inline
+            input.form-check-input#inlineRadio5(type="radio", name="value", value="5", disabled)
+            label.form-check-label(for="inlineRadio5") 5
+          br
+          br
+
+          label.form-label(for="customRange1") Select max price:&nbsp; 
+          output 1
+          input.form-range#customRange1(name="value", type="range", value="1", min="1", max="3000", oninput="this.previousElementSibling.value = this.value", disabled)
+          
+          .d-grid.gap-2.col-4.mx-auto
+            button.btn.btn-outline-primary(type="submit") Submit
+
+
+
+    .container.px-4.px-lg-5.mt-5
       .row.gx-4.gx-lg-5.row-cols-2.row-cols-md-3.row-cols-xl-4.justify-content-center
-        each val in [1, 2, 3, 4, 5, 6]
+        each product in product_list
           .col.mb-5
             .card.h-100
               //-  Product image
@@ -50,16 +108,19 @@ block content
               .card-body.p-4
                 .text-center
                   //-  Product name
-                  h5.fw-bolder Popular Item
+                  h5.fw-bolder #{product["name"]}
+                  br
                   //-  Product reviews
                   .d-flex.justify-content-center.small.text-warning.mb-2
-                    .bi-star-fill
-                    .bi-star-fill
-                    .bi-star-fill
-                    .bi-star-fill
-                    .bi-star-fill
+                    - for (var x = 0; x < product["review"]["rating"]; x++)
+                      .bi-star-fill
+                    
+
                   //-  Product price
-                  | $40.00
+                  | #{product["review"]["price"]} lei
+                  br
+                  br
+                  p.fw-bolder #{product["feedback"]}
   
               //-  Product actions
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
@@ -67,4 +128,28 @@ block content
                   a.btn.btn-outline-dark.mt-auto(href="#") Add to cart
                   
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
-    
+    //- script.
+    //-   function change(){
+    //-     var x = document.getElementById("exampleDataList").value;
+    //-     document.getElementById('noResultValue').innerHTML  = x;
+    //-   }
+
+    script.
+      function selectFilter(obj) {
+        if(obj.value == "rating") {
+          document.getElementById("inlineRadio1").disabled = false;
+          document.getElementById("inlineRadio2").disabled = false;
+          document.getElementById("inlineRadio3").disabled = false;
+          document.getElementById("inlineRadio4").disabled = false;
+          document.getElementById("inlineRadio5").disabled = false;
+          document.getElementById("customRange1").disabled = true;
+        }
+        if(obj.value == "price") {
+          document.getElementById("customRange1").disabled = false;
+          document.getElementById("inlineRadio1").disabled = true;
+          document.getElementById("inlineRadio2").disabled = true;
+          document.getElementById("inlineRadio3").disabled = true;
+          document.getElementById("inlineRadio4").disabled = true;
+          document.getElementById("inlineRadio5").disabled = true;
+        }
+      }
