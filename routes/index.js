@@ -9,6 +9,10 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' })
 })
 
+const reset_controller = require('../controllers/db')
+router.get('/reset', reset_controller.reset)
+
+
 //XSS low controllers and routers
 const xss_low_controller = require('../controllers/xss_low_controller')
 router.get('/level1Low', validator.validateXSSlowSearch, xss_low_controller.photos_list)
@@ -38,9 +42,13 @@ router.get('/level2Low/user', function (req, res) {
   res.send('user')
 })
 
-const reset_controller = require('../controllers/db')
-router.get('/reset', reset_controller.reset)
 
+//XXE low
+const xxe_controller = require('../controllers/xxe_controller')
+router.get('/xxe', xxe_controller.show)
 
+router.get('/xxe/edit', function(req, res){
+  res.render('XXEedit')
+})
 
-
+router.post('/xxe/edit', xxe_controller.upload)
