@@ -43,12 +43,19 @@ router.get('/level2Low/user', function (req, res) {
 })
 
 
-//XXE low
+//XXE
 const xxe_controller = require('../controllers/xxe_controller')
 router.get('/xxe', xxe_controller.show)
-
 router.get('/xxe/edit', function(req, res){
   res.render('XXEedit')
 })
-
 router.post('/xxe/edit', xxe_controller.upload)
+
+
+//File upload hard
+router.get('/fileupload', function(req, res){
+  res.render('fileupload')
+})
+
+const file_upload_controller = require('../controllers/file_upload_controller')
+router.post('/fileupload/upload', file_upload_controller.upload)

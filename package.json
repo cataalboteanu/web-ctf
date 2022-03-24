@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
+    "devstart": "nodemon --watch ./bin/www --watch . ./bin/www",
     "preserverstart": "sudo mongod --dbpath ~/data/db & sudo /etc/init.d/mysql start &",
     "serverstart": "DEBUG=ctf-v1:* npm run devstart",
     "postserverstart": "kill %%",
