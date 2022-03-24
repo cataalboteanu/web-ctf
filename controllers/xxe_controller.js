@@ -14,11 +14,14 @@ exports.show = function(req, res){
 }
 
 exports.upload = function(req, res){
-    
-    
-
     if (req.files.profile && req.files.profile.mimetype == 'text/xml'){
-		var profile = libxmljs.parseXmlString(req.files.profile.data.toString('utf8'), {noent:true, noblanks:true})
+        try {
+            var profile = libxmljs.parseXmlString(req.files.profile.data.toString('utf8'), {noent:true, noblanks:true})
+        } catch (error) {
+            return res.render("XXEedit", {message: "Invalid XML Format"});
+        }
+		
+
         if(profile.root().childNodes().length != 7){
             return res.render("XXEedit", {message: "Invalid XML Format"});
         }
@@ -28,8 +31,10 @@ exports.upload = function(req, res){
                 export_data.push(profile.text().trim())
             })
         }
+    } 
+    else{
+        return res.render("XXEedit", {message: "Invalid File Format"});
     }
 
-    //return res.send(export_data)
     return res.redirect("/xxe");
 }
