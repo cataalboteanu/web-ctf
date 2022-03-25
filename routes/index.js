@@ -58,4 +58,4 @@ router.get('/fileupload', function(req, res){
 })
 
 const file_upload_controller = require('../controllers/file_upload_controller')
-router.post('/fileupload/upload', file_upload_controller.upload)
+router.post('/fileupload', file_upload_controller.upload)

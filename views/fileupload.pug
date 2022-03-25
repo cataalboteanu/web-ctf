@@ -5,7 +5,8 @@ block content
   style.
     @import url("/stylesheets/fileupload/upload.css");
 
-
+  button.btn.btn-outline-dark(type="button", data-bs-toggle="modal", data-bs-target="#exampleModal").
+      See description
   //- Help modal
   .modal.fade#exampleModal(tabindex="-1", aria-labelledby="exampleModalLabel", aria-hidden="true", data-bs-backdrop="static")
       .modal-dialog.modal-dialog-centered
@@ -14,8 +15,8 @@ block content
             h3.modal-title#exampleModalLabel File Upload
             //-button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
           .modal-body.fs-6.
-            This site can help you upload your resume using an XML file.
-            Try to retrieve local files by using an XML external entity (XXE) injection.
+            This site presents an Unrestricted File Upload vulnerability that can get you a reverse shell on the server.
+            Keep in mind that the file that starts the server is located in the bin folder.
             
           .modal-footer
             button.btn.btn-primary(type="button", data-bs-dismiss="modal") OK
@@ -27,7 +28,7 @@ block content
   .row.py-4
     .col-lg-6.mx-auto
       //-  Upload image input
-    form(enctype="multipart/form-data", method="POST", action="/fileupload/upload")
+    form(enctype="multipart/form-data", method="POST", action="/fileupload")
       .input-group.mb-3.px-2.py-2.rounded-pill.bg-white.shadow-sm
         input#upload.form-control.border-0(type="file", name="file")
         label#upload-label.font-weight-light.text-muted(for="upload") Choose file
@@ -38,6 +39,11 @@ block content
       .d-grid.col-1.mx-auto
         button.btn.btn-outline-dark(type="submit", name="submit") Upload
       //-  Uploaded image area
+      if(message)
+        h4.text-center.text-danger= message
+      if(succes)
+        br
+        h4.text-center.text-success= succes
       br
       p.font-italic.text-white.text-center The image uploaded will be rendered inside the box below.
       p#filename.text-white.text-center
