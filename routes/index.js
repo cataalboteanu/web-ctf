@@ -59,3 +59,17 @@ router.get('/fileupload', function(req, res){
 
 const file_upload_controller = require('../controllers/file_upload_controller')
 router.post('/fileupload', file_upload_controller.upload)
+
+
+//Prototype Pollution => RCE
+const prototype_pollution_controller = require('../controllers/prototype_controller')
+router.get('/proto', prototype_pollution_controller.exploit)
+
+//RCE easy
+const rce_controller = require('../controllers/rce_controller')
+//router.get('/rce', rce_controller.calculator)
+router.get('/rce', function(req, res){
+  res.render('calculator')
+})
+
+router.post('/rce', rce_controller.calculator)

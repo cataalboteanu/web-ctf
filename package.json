@@ -23,7 +23,8 @@
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
     "pug": "^3.0.2",
-    "sequelize": "5.8.9"
+    "sequelize": "5.8.9",
+    "systeminformation": "4.30.2"
   },
   "devDependencies": {
     "compression": "^1.7.4",
