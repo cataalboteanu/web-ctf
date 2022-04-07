@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./../../db:/data/db
+      - ./misc/mongo:/docker-entrypoint-initdb.d
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    depends_on:
+      # - mysql-db
+      - mongo
+    #command: ["./wait-for-it.sh", "mongo:27017", "--", "npm", "run", "devstart"]
+    
+
+
+
+  # mysql-db:
+  #   image: mysql:5.7
+  #   expose:
+  #     - "3306"
+  #   env_file:
+  #     - ./vars.env

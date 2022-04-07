@@ -1,0 +1,6 @@
+# Ignore a file or directory in the context root named "modules"
+node_modules
+aaa.pug
+README.md
+working-reflected.txt
+xxe.txt

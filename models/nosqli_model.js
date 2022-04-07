@@ -7,4 +7,4 @@ var loginSchema = new Schema({
     role:String
 });
 
-module.exports = mongoose.model('LoginCollection', loginSchema, 'nosql-bypass');
+module.exports = mongoose.model('LoginCollection', loginSchema, 'nosql_bypass');
