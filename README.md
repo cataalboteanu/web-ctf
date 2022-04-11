@@ -9,6 +9,8 @@ This app uses both MySQL and MongoDB to exemplify multiple real life situations.
 
 ## Quick start:
 ```
+git clone https://github.com/cataalboteanu/web-ctf.git
+cd web-ctf
 docker-compose up
 ```
 Open a browser to http://localhost:3000/ to view the site.
