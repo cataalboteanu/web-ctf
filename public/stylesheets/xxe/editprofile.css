@@ -1,0 +1,37 @@
+body {
+    background-color: #e2e8f0;
+}
+
+.container {
+    max-width: 1000px;
+    padding: 0
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.breadcrumb {
+    background-color: #c5cee4
+}
+
+.breadcrumb a {
+    text-decoration: none
+}
