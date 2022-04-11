@@ -1,17 +1,14 @@
 # web-ctf
 
-## Getting started:
+## Info:
 
-1. [Install node & npm](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
+This is a simple vulnerable NodeJS app that demonstrates OWASP Top 10 vulnerabilities using common npm libraries such as [express](https://www.npmjs.com/package/express), [sequelize](https://www.npmjs.com/package/sequelize), [libxmljs](https://www.npmjs.com/package/libxmljs).
 
-2. [Install mongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
-
-3. [Install mysql](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
+This app uses both MySQL and MongoDB to exemplify multiple real life situations.
 
 
 ## Quick start:
 ```
-npm install
-npm run serverstart
+docker-compose up
 ```
 Open a browser to http://localhost:3000/ to view the site.

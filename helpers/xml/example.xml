@@ -1,0 +1,14 @@
+<products>
+    <product>
+        <name>Xbox One</name>
+        <code>23</code>
+        <tags>gaming console</tags>
+        <description>Gaming console by Microsoft</description>
+    </product>
+    <product>
+        <name>Playstation 4</name>
+        <code>26</code>
+        <tags>gaming console</tags>
+        <description>Gaming console by Sony</description>
+    </product>
+</products>

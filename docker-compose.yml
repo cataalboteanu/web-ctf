@@ -1,32 +1,35 @@
 version: "3.9"
 services:
-  mongo:
+  app:
+      build:
+        context: ./
+        dockerfile: Dockerfile
+      ports:
+        - 3000:3000
+      volumes:
+        - .:/app
+      depends_on:
+        - mongodb
+        - mysql-db
+
+  mongodb:
     image: mongo
     restart: always
     ports:
       - 27017:27017
     volumes:
       - ./../../db:/data/db
-      - ./misc/mongo:/docker-entrypoint-initdb.d
-  app:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+      - ./misc/db_creation:/docker-entrypoint-initdb.d
+  
+  mysql-db:
+    image: mysql:5.7
+    restart: always
     ports:
-      - 3000:3000
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1234
+      MYSQL_DATABASE: vulns
     volumes:
-      - .:/app
-    depends_on:
-      # - mysql-db
-      - mongo
-    #command: ["./wait-for-it.sh", "mongo:27017", "--", "npm", "run", "devstart"]
-    
-
-
-
-  # mysql-db:
-  #   image: mysql:5.7
-  #   expose:
-  #     - "3306"
-  #   env_file:
-  #     - ./vars.env
+      - ./misc/db_creation:/docker-entrypoint-initdb.d

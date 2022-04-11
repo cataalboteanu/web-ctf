@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const { Op } = require('sequelize')
 
 const sequelize = new Sequelize('vulns', 'admin', '1234', {
-    host: 'localhost',
+    host: 'mysql-db',
     dialect: 'mysql'
   });
 
