@@ -49,7 +49,7 @@ block content
             form(enctype="multipart/form-data", method="post", action="/xxe/edit")
               .input-group.mb-3
                 .products-file
-                  input.file-input#inputfile(type="file", name="profile")
+                  input.file-input#inputfile(type="file", name="profile", required="true")
                   button.btn.btn-primary.profile-button(type="submit", name="submit") Upload
 
           h3 Sample XML Resume

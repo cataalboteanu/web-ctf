@@ -6,6 +6,7 @@ services:
         dockerfile: Dockerfile
       ports:
         - 3000:3000
+        - 4444:4444
       volumes:
         - .:/app
       depends_on:

