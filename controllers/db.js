@@ -4,7 +4,7 @@ exports.reset = function(req, res) {
     //MySQL db creationrs
     var pool  = mysql.createPool({
         connectionLimit : 10,
-        host            : 'localhost',
+        host            : 'mysql-db',
         user            : 'admin',
         password        : '1234'
     });
@@ -34,7 +34,7 @@ exports.reset = function(req, res) {
                 console.log(err.message);
         });
         
-        let createProducts = "CREATE TABLE IF NOT EXISTS `Product` ( `id` int unsigned NOT NULL AUTO_INCREMENT, `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL, `feedback` varchar(64) DEFAULT NULL, `review` json DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci";
+        let createProducts = "CREATE TABLE IF NOT EXISTS `Product` ( `id` int unsigned NOT NULL AUTO_INCREMENT, `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL, `feedback` varchar(64) DEFAULT NULL, `review` json DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8mb4";
         connection.query(createProducts, function(err, results, fields) {
             if (err) 
                 console.log(err.message);
@@ -55,7 +55,7 @@ exports.reset = function(req, res) {
                 console.log(err.message);
         });
 
-        let createUsers = "CREATE TABLE IF NOT EXISTS `Users` ( `id` int unsigned NOT NULL AUTO_INCREMENT, `nume` varchar(255) DEFAULT NULL, `pass` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci";
+        let createUsers = "CREATE TABLE IF NOT EXISTS `Users` ( `id` int unsigned NOT NULL AUTO_INCREMENT, `nume` varchar(255) DEFAULT NULL, `pass` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4";
         connection.query(createUsers, function(err, results, fields) {
             if (err) 
                 console.log(err.message);
@@ -77,7 +77,6 @@ exports.reset = function(req, res) {
     const User = require('../models/nosqli_model');
     const Photo = require('../models/xss_stored_model')
 
-    console.log("ajunge mongo");
     User.deleteMany({}, function (err) {});
     var users = [
         {
