@@ -3,15 +3,14 @@ const {validationResult, check} = require('express-validator')
 
 const today = new Date().toISOString().slice(0, 10)
 const photosArray = new Array(
-    ['/images/boat-gaa2ca329d_640.jpg', 'Barca pe Balea Lac, priveliste frumoasa la munte', today],
-    ['/images/dog-g213168153_640.jpg', 'Caine zambaret', today],
-    ['/images/grill-g30f8f79f9_640.jpg', 'Foisor pentru gratar', today],
-    ['/images/meat-gde809f16d_640.jpg', 'Carne pe gratar', today],
-    ['/images/dog-g71b6deabf_640.jpg', 'Caine in excurie pe munte', today],
-    ['/images/mountains-g70563c951_640.jpg', 'Vedere de la munte', today],
-    ['/images/person-g5c2bd8b55_640.jpg', 'On top of the world munte', today],
-    ['/images/rottweiler-g31139b978_640.jpg', 'Cainii vecinului', today]);
-
+    ['https://i.ibb.co/n0RDTsq/boat-gaa2ca329d-640.jpg', 'Barca pe Balea Lac, priveliste frumoasa la munte', today],
+    ['https://i.ibb.co/WVVZFt1/dog-g213168153-640.jpg', 'Caine zambaret', today],
+    ['https://i.ibb.co/KjbwsxR/grill-g30f8f79f9-640.jpg', 'Foisor pentru gratar', today],
+    ['https://i.ibb.co/wrZxm7t/meat-gde809f16d-640.jpg', 'Carne pe gratar', today],
+    ['https://i.ibb.co/kJL8Sc8/dog-g71b6deabf-640.jpg', 'Caine in excurie pe munte', today],
+    ['https://i.ibb.co/sFqVVbt/mountains-g70563c951-640.jpg', 'Vedere de la munte', today],
+    ['https://i.ibb.co/xDgN75g/person-g5c2bd8b55-640.jpg', 'On top of the world munte', today],
+    ['https://i.ibb.co/TvNSymX/rottweiler-g31139b978-640.jpg', 'Cainii vecinului', today]);
 
 
 

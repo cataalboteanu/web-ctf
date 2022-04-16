@@ -98,11 +98,26 @@ block content
 
     .container.px-4.px-lg-5.mt-5
       .row.gx-4.gx-lg-5.row-cols-2.row-cols-md-3.row-cols-xl-4.justify-content-center
-        each product in product_list
+        each product, i in product_list
           .col.mb-5
             .card.h-100
               //-  Product image
-              img.card-img-top(src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg", alt="...")
+              if(i==0)
+                img.card-img-top(src="https://i.ibb.co/VQyKTJc/colgate-360-toothbrush-450x300.png", alt="Periuta")
+              if(i==1)
+                img.card-img-top(src="https://i.ibb.co/4d3fwc9/JBL-Flip5-Product-Photo-Side-Midnight-Black-1605x1605-DS3-450x300.png", alt="Boxa")
+              if(i==2)
+                img.card-img-top(src="https://i.ibb.co/2NWfZ1d/csm-apple-iphone-12-super-retina-xdr-display-4c5ebf0e70-450x300.jpg", alt="Iphone")
+              if(i==3)
+                img.card-img-top(src="https://i.ibb.co/dGmNxZw/351527fd80bf1d1000be4b47899f-450x300.jpg", alt="Milka")
+              if(i==4)
+                img.card-img-top(src="https://i.ibb.co/092tpKK/cl-450x300.jpg", alt="Bilet")
+              if(i==5)
+                img.card-img-top(src="https://i.ibb.co/FBgr9mm/mens-shirts-500x500-450x300.jpg", alt="Camasi")
+
+
+
+
               //-  Product details
               .card-body.p-4
                 .text-center
