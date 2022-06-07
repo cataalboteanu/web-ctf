@@ -1,7 +1,7 @@
 var mysql = require('mysql2');
 
 exports.reset = function(req, res) {
-    //MySQL db creationrs
+    //MySQL db creation
     var pool  = mysql.createPool({
         connectionLimit : 10,
         host            : 'mysql-db',
@@ -61,14 +61,14 @@ exports.reset = function(req, res) {
                 console.log(err.message);
         });
 
-        let insertUsers = "insert into `Users` (`id`, `nume`, `pass`) values (1, 'Andrei', '1234'), (2, 'Nivel Urmator', 'w3x7UtQL');"
+        let insertUsers = "insert into `Users` (`id`, `nume`, `pass`) values (1, 'Andrei', '1234'), (2, 'Flag', 'w3x7UtQL');"
         connection.query(insertUsers, function(err, results, fields) {
             if (err) 
                 console.log(err.message);
             connection.release();
         });
 
-        pool.end();
+        //pool.end();
     });
 
     //----------------------------------------------------------------------------------------------------

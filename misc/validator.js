@@ -281,7 +281,7 @@ exports.validateXSSlowSearch =
                 .bail().trim().escape().toLowerCase();
 
 exports.validateXSSlowPost = 
-                body('description').trim().not().contains('script').withMessage("Don't try running any scripts")
+                body('description').trim().toLowerCase().not().contains('script').withMessage("Don't try running any scripts")
                 .bail().not().isEmpty().withMessage('Description cannot be empty!');
 
 exports.validateXSShigh = 

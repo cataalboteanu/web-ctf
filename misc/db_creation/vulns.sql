@@ -29,4 +29,4 @@ CREATE TABLE `Users` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4;
 
 insert into `Users` (`id`, `nume`, `pass`) values (1, 'Andrei', '1234');
-insert into `Users` (`id`, `nume`, `pass`) values (2, 'Nivel Urmator', 'w3x7UtQL');
+insert into `Users` (`id`, `nume`, `pass`) values (2, 'Flag', 'w3x7UtQL');

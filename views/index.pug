@@ -26,19 +26,19 @@ html
         li
           a.nav-link.text-white(href="/level1Low")
             i.fa.fa-dashboard
-            span.ms-2 XSS Stored (Hard)
+            span.ms-2 XSS Stored
         li
           a.nav-link.text-white(href="/level1Hard")
             i.fa.fa-dashboard
-            span.ms-2 XSS Reflected
-        li
-          a.nav-link.text-white(href="/level2Hard")
-            i.fa.fa-first-order
-            span.ms-2 SQL injection (Hard)
+            span.ms-2 XSS Reflected (Hard)
         li
           a.nav-link.text-white(href="/level2Low")
             i.fa.fa-cog
             span.ms-2 NoSQL injection
+        li
+          a.nav-link.text-white(href="/level2Hard")
+            i.fa.fa-first-order
+            span.ms-2 SQL injection (Hard)
         li
           a.nav-link.text-white(href="/xxe")
             i.fa.fa-bookmark
@@ -51,10 +51,10 @@ html
           a.nav-link.text-white(href="/rce")
             i.fa.fa-bookmark
             span.ms-2 RCE
-        li
-          a.nav-link.text-white(href="/proto")
-            i.fa.fa-bookmark
-            span.ms-2 Prototype pollution
+        //- li
+        //-   a.nav-link.text-white(href="/proto")
+        //-     i.fa.fa-bookmark
+        //-     span.ms-2 Prototype pollution
 
       hr
       .dropdown
@@ -64,10 +64,9 @@ html
           strong Github repo
 
     #content.p-4.p-md-5.pt-5
-      h2.mb-4 Titlu
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  
+      h2.mb-4 Web CTF
+      p The application contains multiple vulnerabilities from the OWASP Top 10 standard, such as Cross-site Scripting, SQL Injection, Path Traversal, Unrestricted File Upload and Remote Code Execution, strucutred on different complexity levels. Each one of these vulnerabilities presents an information of interest to the attacker (the flag). The application is also susceptible to vulnerabilities of the operating system.
+      p The main goal of this application is to offer a legal enviroment in which the user can test his skills or learn new things about web application security. It can also be used as a class room enviroment to aid students gain an understanding of the concepts of web application security. 
       
 
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css")

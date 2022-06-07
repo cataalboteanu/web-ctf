@@ -47,7 +47,7 @@ const get_popular = async function(req, res){
         }
       }
     }).catch(function(err){
-      return res.send("Eroare SQL\n" + err);
+      return res.send("Eroare SQL\n");
     })
   }
 
@@ -57,7 +57,7 @@ const get_popular = async function(req, res){
       //where: {review: sequelize.json("review.rating", sequelize.literal(rating))},
       where: {review: sequelize.json(key, value)},
     }).catch(function(err){
-      return res.send("Eroare SQL\n" + err);
+      return res.send("Eroare SQL\n");
     })
   }
   //console.log(p)

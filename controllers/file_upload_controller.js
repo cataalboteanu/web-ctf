@@ -24,8 +24,5 @@ exports.upload = function(req, res){
           return res.status(500).send(err);
         }
         return res.render("fileupload", {succes: "Success! The file is stored at: " + save_path});
-
-        //return res.send({ status: "success", path: save_path });
     });
-
 }

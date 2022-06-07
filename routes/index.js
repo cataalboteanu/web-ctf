@@ -6,7 +6,7 @@ const validator = require('../misc/validator')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
+  res.render('index', { title: 'Web-CTF' })
 })
 
 const reset_controller = require('../controllers/db')
